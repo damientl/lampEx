@@ -29,6 +29,20 @@ public class SEOService {
   }
 
   private char generateRandomChar() {
-    return  (char) new Random().nextInt('{');
+
+    int[] validSections = {10, 'Z' - 'A', 'Z' - 'A'};
+    int allValidChars  = validSections[0]+ validSections[0]+ validSections[0];
+    int[] invalidSections = {'/', '@'-':', '.' - '['};
+
+    char c = (char) new Random().nextInt(allValidChars);
+
+    if(c > validSections[0] + validSections[1]){
+      return (char) (invalidSections[0] + invalidSections[1] + invalidSections[2] + c);
+    }
+
+    if(c > validSections[0] ){
+      return (char) (invalidSections[0] + invalidSections[1] + c);
+    }
+    return (char) (invalidSections[0] + c);
   }
 }
