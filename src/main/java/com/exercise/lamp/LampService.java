@@ -13,8 +13,10 @@ public class LampService {
                 k++;
             }
         }
+        int[] result = new int[k];
 
-        return moments;
+        System.arraycopy(moments, 0, result,0, k);
+        return result;
     }
 
     private int setIndexPositionToOne(int lights, int turnedOnLight) {
@@ -22,7 +24,7 @@ public class LampService {
             throw new IllegalArgumentException("Light numbers must be > 1");
         }
 
-        return lights + 2 ^ turnedOnLight;
+        return lights + (int) Math.pow(2D, (double) turnedOnLight);
     }
 
     private Boolean areAllBitsSet(int n)
